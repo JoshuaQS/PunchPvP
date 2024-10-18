@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PunchPvP</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="icon" href="/IMG/favicon.png" type="image/png">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</head>
+<body>
+    <body style="background-color: #e3cdb8;">
+    <!-- Floating Discord Button -->
+    <a href="https://discord.gg/yoursupport" target="_blank" class="btn btn-primary rounded-circle position-fixed shadow-lg" style="bottom: 20px; right: 20px; z-index: 1000; font-size: 24px; padding: 15px 20px;">
+        <i class="bi bi-discord"></i>
+    </a>
+
+    <!-- Navbar fixed within the carousel -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light bg-opacity-75 position-absolute start-50 translate-middle-x w-45 rounded-pill" style="z-index: 10; top: 30px;">
+        <div class="container-fluid">
+            <!-- Logo -->
+            <a class="navbar-brand d-flex align-items-center text-dark" href="#">
+                <img src="/IMG/Logo.png" alt="PunchPvP Logo" class="img-fluid rounded-circle" style="width: 35px; height: auto;"> 
+                <span class="ms-2 fw-bold" style="color: #FF4500;">PunchPvP</span>
+            </a>
+            <!-- Small screen menu button -->
+            <button class="navbar-toggler text-dark border-dark" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <!-- Navbar options (centered) -->
+            <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item"><a class="nav-link text-dark" href="#description">Description</a></li>
+                    <li class="nav-item"><a class="nav-link text-dark" href="#game-modes">Game Modes</a></li>
+                    <li class="nav-item"><a class="nav-link text-dark" href="#store">Store</a></li>
+                    <li class="nav-item"><a class="nav-link text-dark" href="#media">Images and Videos</a></li>
+                    <li class="nav-item"><a class="nav-link text-dark" href="#how-to-join">How to Join</a></li>
+                    <li class="nav-item"><a class="nav-link text-dark" href="#contact">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    
+    <!-- Carousel -->
+    <div id="carouselExample" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-inner">
+            <div class="carousel-item active" style="height: 90vh;">
+                <img src="IMG/Carrusel1.png" class="d-block w-100" alt="Slide 1" style="height: 100%; object-fit: cover;">
+            </div>
+            <div class="carousel-item" style="height: 90vh;">
+                <img src="IMG/Carrusel2.png" class="d-block w-100" alt="Slide 2" style="height: 100%; object-fit: cover;">
+            </div>
+            <div class="carousel-item" style="height: 90vh;">
+                <img src="IMG/Carrusel3.png" class="d-block w-100" alt="Slide 3" style="height: 100%; object-fit: cover;">
+            </div>
+        </div>
+        <!-- Centered carousel text -->
+        <div class="carousel-caption d-flex flex-column align-items-center justify-content-center h-100">
+            <h1 class="display-3 text-uppercase fw-bold" style="color: #FF4500; font-family: 'Josefin Sans', sans-serif; text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);">
+                Welcome to PunchPvP!
+            </h1>            
+            <p class="lead text-white-50 mb-4 px-3 py-1 bg-black bg-opacity-75 rounded">The ultimate PvP server with KitPvP, Practice, SkyWars, and more!</p>           
+            <p class="mb-5 fs-4" style="color: #ffffff; text-shadow: 4px 4px 10px rgba(0, 0, 0, 0.9);">
+                punchpvp.net
+            </p>            
+            <button onclick="copyIP()" class="btn btn-warning btn-lg shadow">Join Now</button>
+            <p id="alert1" class="mt-3 text-success" style="display: none;">IP copied to clipboard!</p>
+        </div>
+    </div>
+
+    <!-- Server Description -->
+    <section class="container my-5 py-5 text-center" id="description">
+        <div class="row justify-content-center">
+            <div class="col-md-10 col-lg-8">
+                <!-- Logo with animation -->
+                <img src="/IMG/Logo.png" class="mb-4 img-fluid animate__animated animate__zoomIn" style="width: 150px; height: 150px;">
+                <!-- Title -->
+                <h2 class="mb-3 display-4 fw-bold animate__animated animate__fadeInUp" style="color: #FF4500;">What is PunchPvP?</h2>
+                <!-- Text -->
+                <p class="lead text-muted mb-4 animate__animated animate__fadeInUp">
+                    PunchPvP is a server dedicated to <span class="fw-bold text-dark">PvP</span>, featuring game modes like <span style="color: #FF4500;">KitPvP</span>, <span style="color: #FF4500;">Practice</span>, and <span style="color: #FF4500;">SkyWars</span>. Only the best warriors will survive. If you love combat, this is the place for you!
+                </p>
+                <!-- Call to action button -->
+                <a href="#how-to-join" class="btn btn-warning btn-lg shadow-lg animate__animated animate__fadeInUp">Join Now!</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Game Modes Section with Carousel of Cards -->
+    <section class="py-5" id="game-modes" style="background-color: #ffffff;">
+        <div class="container text-center">
+            <h1 class="mb-4 fw-bold">Game Modes</h1>
+            <!-- Cards Carousel -->
+            <div id="gameModesCarousel" class="carousel slide" data-bs-ride="carousel">
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <div class="row">
+                            <!-- KitPvP -->
+                            <div class="col-md-4">
+                                <div class="card h-100 shadow-sm border-0">
+                                    <img src="IMG/KitPvP.png" class="card-img-top mx-auto mt-3" style="width: 80px; height: 80px;" alt="KitPvP">
+                                    <div class="card-body">
+                                        <h5 class="card-title" style="color: #FF4500">KitPvP</h5>
+                                        <p class="card-text">Battle others using predefined kits in intense PvP fights.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Practice -->
+                            <div class="col-md-4">
+                                <div class="card h-100 shadow-sm border-0">
+                                    <img src="IMG/Practice.png" class="card-img-top mx-auto mt-3" style="width: 80px; height: 80px;" alt="Practice">
+                                    <div class="card-body">
+                                        <h5 class="card-title" style="color: #FF4500">Practice</h5>
+                                        <p class="card-text">Improve your PvP skills by facing off against others in practice duels.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- SkyWars -->
+                            <div class="col-md-4">
+                                <div class="card h-100 shadow-sm border-0">
+                                    <img src="/IMG/Skywars.png" class="card-img-top mx-auto mt-3" style="width: 80px; height: 80px;" alt="SkyWars">
+                                    <div class="card-body">
+                                        <h5 class="card-title" style="color: #FF4500">SkyWars</h5>
+                                        <p class="card-text">Engage in PvP battles on floating islands in thrilling combat.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <div class="row">
+                            <!-- Pillars of Fortune -->
+                            <div class="col-md-4">
+                                <div class="card h-100 shadow-sm border-0">
+                                    <img src="IMG/Pillars.png" class="card-img-top mx-auto mt-3" style="width: 80px; height: 80px;" alt="Pillars of Fortune">
+                                    <div class="card-body">
+                                        <h5 class="card-title" style="color: #FF4500">Pillars of Fortune</h5>
+                                        <p class="card-text">Find treasures and conquer the pillars to claim your victory.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        <!-- Survival -->
+                        <div class="col-md-4">
+                            <div class="card h-100 shadow-sm border-0">
+                                <img src="/IMG/Survival.png" class="card-img-top mx-auto mt-3" style="width: 80px; height: 80px;" alt="Survival">
+                                <div class="card-body">
+                                    <h5 class="card-title" style="color: #FF4500">Survival</h5>
+                                    <p class="card-text">Survive, build and prosper in a vast world as you battle other players.</p> 
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Controles del Carrusel con íconos personalizados más pequeños y posicionados en los costados -->
+<button class="carousel-control-prev" type="button" data-bs-target="#gameModesCarousel" data-bs-slide="prev" style="position: absolute; top: 50%; left: -30px; transform: translateY(-50%);">
+    <span class="bg-warning rounded-circle p-2 d-flex justify-content-center align-items-center" style="width: 30px; height: 30px;">
+        <i class="bi bi-arrow-left-short" style="font-size: 20px; color: white;"></i>
+    </span>
+    <span class="visually-hidden">Last</span>
+</button>
+<button class="carousel-control-next" type="button" data-bs-target="#gameModesCarousel" data-bs-slide="next" style="position: absolute; top: 50%; right: -30px; transform: translateY(-50%);">
+    <span class="bg-warning rounded-circle p-2 d-flex justify-content-center align-items-center" style="width: 30px; height: 30px;">
+        <i class="bi bi-arrow-right-short" style="font-size: 20px; color: white;"></i>
+    </span>
+    <span class="visually-hidden">Next</span>
+</button>
+
+</section>
+
+<!-- Sección de Imágenes y Videos con Carrusel -->
+<section class="container my-5 py-5 text-center" id="gameplay">
+    <h2 class="mb-5 display-4 fw-bold" style="color: #FF4500">Images and Videos</h2>
+    <div id="gameplayCarousel" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <div class="row justify-content-center">
+                    <div class="col-md-4">
+                        <div class="card h-100 shadow-sm">
+                            <img src="IMG/Mapa1.png" class="img-fluid rounded-top" alt="Imagen del servidor" style="height: 200px; object-fit: cover;">
+                            <div class="card-body">
+                                <p class="card-text text-muted">Explore our server through images that show the intensity of combat and fun.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card h-100 shadow-sm">
+                            <img src="IMG/Mapa2.png" class="img-fluid rounded-top" alt="Imagen del servidor" style="height: 200px; object-fit: cover;">
+                            <div class="card-body">
+                                <p class="card-text text-muted">Explore our server through images that show the intensity of combat and fun.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card h-100 shadow-sm">
+                            <img src="IMG/Mapa3.png" class="img-fluid rounded-top" alt="Imagen del servidor" style="height: 200px; object-fit: cover;">
+                            <div class="card-body">
+                                <p class="card-text text-muted">Explore our server through images that show the intensity of combat and fun.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="carousel-item">
+                <div class="row justify-content-center">
+                    <div class="col-md-4">
+                        <div class="card h-100 shadow-sm">
+                            <img src="https://via.placeholder.com/500x300" class="img-fluid rounded-top" alt="Otra imagen del servidor" style="height: 200px; object-fit: cover;">
+                            <div class="card-body">
+                                <p class="card-text text-muted">Enjoy incredible images showcasing our custom environments and exciting events.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card h-100 shadow-sm">
+                            <iframe width="100%" height="200" src="https://www.youtube.com/embed/VIDEO_ID2" class="rounded-top" frameborder="0" allowfullscreen></iframe>
+                            <div class="card-body">
+                                <p class="card-text text-muted">Feel the adrenaline watching the most intense plays on the server.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card h-100 shadow-sm">
+                            <img src="https://via.placeholder.com/500x300" class="img-fluid rounded-top" alt="Otra imagen del servidor" style="height: 200px; object-fit: cover;">
+                            <div class="card-body">
+                                <p class="card-text text-muted">See our detailed map and powerful visuals in action.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="carousel-item">
+                <div class="row justify-content-center">
+                    <div class="col-md-4">
+                        <div class="card h-100 shadow-sm">
+                            <img src="https://via.placeholder.com/500x300" class="img-fluid rounded-top" alt="Otra imagen del servidor" style="height: 200px; object-fit: cover;">
+                            <div class="card-body">
+                                <p class="card-text text-muted">Experience the heart of the battlefield with vivid scenes.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card h-100 shadow-sm">
+                            <img src="https://via.placeholder.com/500x300" class="img-fluid rounded-top" alt="Otra imagen del servidor" style="height: 200px; object-fit: cover;">
+                            <div class="card-body">
+                                <p class="card-text text-muted">Dive into our immersive world with beautifully crafted environments.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card h-100 shadow-sm">
+                            <iframe width="100%" height="200" src="https://www.youtube.com/embed/VIDEO_ID3" class="rounded-top" frameborder="0" allowfullscreen></iframe>
+                            <div class="card-body">
+                                <p class="card-text text-muted">Watch exciting moments of gameplay from our top players.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Controles del Carrusel con botones personalizados -->
+        <button class="carousel-control-prev" type="button" data-bs-target="#gameplayCarousel" data-bs-slide="prev" style="position: absolute; top: 50%; left: -60px; transform: translateY(-50%);">
+            <span class="bg-warning rounded-circle p-2 d-flex justify-content-center align-items-center" style="width: 30px; height: 30px;">
+                <i class="bi bi-arrow-left-short" style="font-size: 20px; color: white;"></i>
+            </span>
+            <span class="visually-hidden">Anterior</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#gameplayCarousel" data-bs-slide="next" style="position: absolute; top: 50%; right: -60px; transform: translateY(-50%);">
+            <span class="bg-warning rounded-circle p-2 d-flex justify-content-center align-items-center" style="width: 30px; height: 30px;">
+                <i class="bi bi-arrow-right-short" style="font-size: 20px; color: white;"></i>
+            </span>
+            <span class="visually-hidden">Siguiente</span>
+        </button>
+    </div>
+</section>
+
+
+
+<!-- Sección de Cómo Unirse -->
+<section class="bg-light text-white py-5 text-center" id="how-to-join">
+    <div class="container">
+        <h2 class="mb-4 display-4 fw-bold" style="color: #FF4500;">How to Join</h2>
+        <p class="lead mb-4" style="color: black;">Follow these simple steps to join PunchPvP and show off your combat skills!</p>
+        <div class="row justify-content-center mb-5">
+            <div class="col-md-4">
+                <div class="card h-100 bg-secondary text-white shadow-sm mb-4">
+                    <div class="card-body d-flex flex-column justify-content-center">
+                        <h5 class="card-title">Required Version</h5>
+                        <p class="card-text">Make sure you have Minecraft version <strong style="color: #f57f54;">1.18.2+</strong> to enjoy all the content.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card h-100 bg-secondary text-white shadow-sm mb-4">
+                    <div class="card-body d-flex flex-column justify-content-center">
+                        <h5 class="card-title">Server IP</h5>
+                        <p class="card-text">Connect using the IP: <strong style="color: #f57f54;">punchpvp.net</strong></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <button onclick="copyIP('alert3')" class="btn btn-warning btn-lg shadow-lg mb-3">Join Now</button>
+        <p id="alert3" class="mt-3 text-success" style="display: none;">IP copied to clipboard!</p>
+    </div>
+</section>
+
+    <!-- Sección de Contacto -->
+    <section class="container my-5 py-5" id="contacto">
+        <div class="row text-center">
+            <div class="col-12">
+                <h2 class="mb-4 text-uppercase fw-bold">Contact and Support</h2>
+                <p class="lead mb-5">Do you have questions or need support? Contact us through our media and we will help you as soon as possible!</p>
+            </div>
+        </div>
+        <div class="row justify-content-center">
+            <!-- Discord -->
+            <div class="col-md-3 mb-4 text-center">
+                <div class="card h-100 shadow-sm border-0 p-4 d-flex flex-column">
+                    <i class="bi bi-discord fs-1 mb-3" style="color: #FF4500;"></i>
+                    <h5 class="fw-bold">Join our Discord</h5>
+                    <p class="text-muted">The fastest way to get help and stay up to date with server news.</p>
+                    <div class="mt-auto">
+                        <a href="https://discord.gg/tuservidor" class="btn btn-primary btn-sm " style="background-color: #FF4500;">Go to Discord</a>
+                    </div>
+                </div>
+            </div>
+            <!-- Email -->
+            <div class="col-md-3 mb-4 text-center">
+                <div class="card h-100 shadow-sm border-0 p-4 d-flex flex-column">
+                    <i class="bi bi-envelope fs-1 mb-3" style="color: #FF4500;"></i>
+                    <h5 class="fw-bold">Email</h5>
+                    <p class="text-muted">If you have any questions or suggestions, please send us an email.</p>
+                    <div class="mt-auto">
+                        <a href="mailto:support@punchpvp.net" class="btn btn-primary btn-sm" style="background-color: #FF4500;">Send Email</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+
+    <!-- Footer -->
+    <footer class="text-white pt-5 bg-dark">
+        <div class="container">
+            <div class="row mb-4">
+                <!-- Logo and Description Section -->
+                <div class="col-md-4 d-flex align-items-start">
+                    <img src="/IMG/Punch.png" alt="PunchPvP Logo" class="img-fluid me-3" style="width: 120px; height: auto;">
+                    <div>
+                        <h5 class="text-uppercase fw-bold mb-3">PunchPvP</h5>
+                        <p>PunchPvP is the ultimate Minecraft PvP server, featuring modes like KitPvP, Practice, SkyWars, and more. Join now and showcase your skills!</p>
+                    </div>
+                </div>
+                <!-- Quick Links -->
+                <div class="col-md-4">
+                    <h5 class="text-uppercase fw-bold mb-3">Quick Links</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="#description" class="text-white">Description</a></li>
+                        <li><a href="#game-modes" class="text-white">Game Modes</a></li>
+                        <li><a href="#media" class="text-white">Images and Videos</a></li>
+                        <li><a href="#how-to-join" class="text-white">How to Join</a></li>
+                        <li><a href="#contact" class="text-white">Contact</a></li>
+                        <li><a href="#store" class="text-white">Store</a></li>
+                    </ul>
+                </div>
+<!-- Redes sociales -->
+<div class="col-md-4 text-center">
+    <h5 class="text-uppercase fw-bold mb-3">Contact Us</h5>
+    <a href="https://discord.gg/yoursupport" target="_blank" class="text-white me-4 fs-3 d-inline-block align-middle">
+        <i class="bi bi-discord"></i>
+    </a>
+    <a href="mailto:support@punchpvp.net" target="_blank" class="text-white me-4 fs-3 d-inline-block align-middle">
+        <i class="bi bi-envelope"></i>
+    </a>
+</div>
+
+            </div>
+            <!-- Divider -->
+            <hr class="mb-4">
+            <!-- Bottom Part -->
+            <div class="row text-center">
+                <div class="col-md-12">
+                    <p class="mb-0">&copy; 2024 PunchPvP. All rights reserved.</p>
+                    <p class="mb-0">Not associated or endorsed by Mojang or Microsoft</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+       
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+    function copyIP() {
+        const ip = "punchpvp.net";
+        navigator.clipboard.writeText(ip).then(() => {
+            Swal.fire({
+                icon: 'success',
+                title: 'IP copied!',
+                text: 'The IP has been copied to your clipboard.',
+                confirmButtonText: 'Ok',
+                timer: 3000,
+                timerProgressBar: true,
+                background: '#1c1c1c',
+                color: '#ffffff',
+                confirmButtonColor: '#FF4500'
+            });
+        });
+    }
+    </script>
+</body>
+</html>
+
